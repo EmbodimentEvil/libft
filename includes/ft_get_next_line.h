@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_get_next_line.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 16:02:36 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/16 04:16:48 by sleonia          ###   ########.fr       */
+/*   Created: 2019/11/16 01:50:20 by sleonia           #+#    #+#             */
+/*   Updated: 2019/11/16 02:02:03 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-char	*ft_strchr(const char *str, int sym)
+# include "libft.h"
+
+# define BUFF_SIZE 2
+
+# define ERROR -1
+# define SUCCESS 1
+# define NOTHING_RD 0
+
+typedef struct		s_gnl
 {
-	int i;
+	int				fd;
+	char			buffer[BUFF_SIZE + 1];
+	char			*temp;
+	struct s_gnl	*prev;
+	struct s_gnl	*next;
+}					t_gnl;
 
-	i = -1;
-	while (*(str + (++i)))
-		if (*(str + i) == sym)
-			return (((char*)str) + i);
-	if (sym == '\0')
-		return (((char*)str) + i);
-	return (0);
-}
+int					get_next_line(const int fd, char **line);
+#endif

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 21:39:57 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/16 04:18:42 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/12 12:51:23 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t ct;
+	size_t			i;
+	int				*str;
+	unsigned char	symb;
 
-	ct = 0;
-	while (ct < len)
-		*(((char*)b) + (ct++)) = (unsigned char)c;
+	i = 0;
+	str = (int *)b;
+	symb = (unsigned char)c;
+	while (i++ < len)
+		str[i] = symb;
 	return (b);
 }

@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_safe_malloc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 01:57:00 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/15 05:23:54 by sleonia          ###   ########.fr       */
+/*   Created: 2019/11/16 03:45:23 by sleonia           #+#    #+#             */
+/*   Updated: 2019/12/10 01:41:06 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_error.h"
+#include "ft_memory.h"
 
-void		ft_exit(char *error_text)
+void	*ft_safe_malloc(size_t size)
 {
-	ft_putstr("\033[31m");
-	ft_putendl(error_text);
-	ft_putstr("\033[0m");
-	exit(1);
+	void *mem;
+
+	if (size == 0)
+		return (NULL);
+	if (!(mem = (void *)malloc(sizeof(void) * size)))
+		ft_exit(ERROR_MALLOC);
+	return (mem);
 }

@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_strchrdup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 01:57:00 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/15 05:23:54 by sleonia          ###   ########.fr       */
+/*   Created: 2019/11/16 01:54:46 by sleonia           #+#    #+#             */
+/*   Updated: 2019/11/16 03:56:15 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_error.h"
+#include "ft_string.h"
 
-void		ft_exit(char *error_text)
+char	*ft_strchrdup(char *str, char chr)
 {
-	ft_putstr("\033[31m");
-	ft_putendl(error_text);
-	ft_putstr("\033[0m");
-	exit(1);
+	long int	ct;
+	long int	ct2;
+	char		*new;
+
+	ct = 0;
+	ct2 = -1;
+	while (str[ct] != chr && str[ct])
+		ct++;
+	new = ft_strnew(ct);
+	while (++ct2 < ct)
+		new[ct2] = str[ct2];
+	return (new);
 }

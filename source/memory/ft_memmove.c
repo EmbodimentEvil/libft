@@ -6,30 +6,24 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:17:19 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/12 12:51:20 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/16 04:18:30 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_memory.h"
 
-void			*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char		*d;
-	char		*s;
-	size_t		i;
+	size_t	ct;
 
-	i = 0;
-	d = (char *)dst;
-	s = (char *)src;
-	if (s > d)
-	{
-		while (i++ < len)
-			d[i] = s[i];
-	}
-	else if (s < d)
-	{
-		while (len-- > 0)
-			d[len] = s[len];
-	}
+	ct = -1;
+	if (!dst && !src)
+		return (NULL);
+	if (dst < src)
+		while (++ct < len)
+			*(((unsigned char*)dst) + ct) = *(((unsigned char*)src) + ct);
+	else
+		while (len--)
+			*(((unsigned char*)dst) + len) = *(((unsigned char*)src) + len);
 	return (dst);
 }

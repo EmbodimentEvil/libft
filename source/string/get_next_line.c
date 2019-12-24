@@ -6,62 +6,103 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 15:31:33 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/12 12:53:30 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/16 04:15:10 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_string.h"
 
-int		ft_new_line(char **s, char **line, int fd, int ret)
+t_gnl	*ft_list_creator(int fd, t_gnl *prev, t_gnl *next)
 {
-	char	*tmp;
-	int		len;
+	t_gnl *new;
 
-	len = 0;
-	while (s[fd][len] != '\n' && s[fd][len] != '\0')
-		len++;
-	if (s[fd][len] == '\n')
+	if (!(new = (t_gnl*)malloc(sizeof(t_gnl))))
+		return (NULL);
+	if (!(new->temp = ft_strnew(0)))
 	{
-		*line = ft_strsub(s[fd], 0, len);
-		tmp = ft_strdup(s[fd] + len + 1);
-		free(s[fd]);
-		s[fd] = tmp;
-		if (s[fd][0] == '\0')
-			ft_strdel(&s[fd]);
+		free(new);
+		return (NULL);
 	}
-	else if (s[fd][len] == '\0')
+	new->fd = fd;
+	new->prev = prev;
+	new->next = next;
+	return (new);
+}
+
+t_gnl	*ft_check_fd(int fd, t_gnl *buf)
+{
+	if (!buf)
+		return (ft_list_creator(fd, buf, NULL));
+	if (fd == buf->fd)
+		return (buf);
+	else if (fd > buf->fd)
 	{
-		if (ret == BUFF_SIZE)
-			return (get_next_line(fd, line));
-		*line = ft_strdup(s[fd]);
-		ft_strdel(&s[fd]);
+		while (buf->fd != fd && buf->next)
+			buf = buf->next;
+		return (buf->fd == fd ? buf :
+			(buf->next = ft_list_creator(fd, buf, NULL)));
 	}
-	return (1);
+	else
+	{
+		while (buf->fd != fd && buf->prev)
+			buf = buf->prev;
+		return (buf->fd == fd ? buf : ft_list_creator(fd, NULL, buf));
+	}
+}
+
+int		ft_temp_check(t_gnl *buf)
+{
+	char	*temp;
+
+	if (buf->temp && *buf->temp)
+	{
+		temp = ft_strchr(buf->temp, '\n');
+		if (temp)
+			ft_memmove(buf->temp, temp + 1, ft_strlen(temp));
+		else
+		{
+			free(buf->temp);
+			buf->temp = ft_strnew(0);
+		}
+		return (SUCCESS);
+	}
+	return (NOTHING_RD);
+}
+
+int		ft_writer(t_gnl *buf, char **line)
+{
+	long int	ct;
+
+	while ((ct = read(buf->fd, buf->buffer, BUFF_SIZE)))
+	{
+		if (ct < 0)
+			return (ERROR);
+		buf->buffer[ct] = '\0';
+		if (!(buf->temp = ft_strjoin_free(buf->temp, buf->buffer, 1)))
+			return (ERROR);
+		if (ft_strchr(buf->buffer, '\n'))
+			break ;
+	}
+	if (buf->temp)
+		if (!(*line = ft_strchrdup(buf->temp, '\n')))
+			return (ERROR);
+	return (ft_temp_check(buf) == SUCCESS ? SUCCESS : NOTHING_RD);
 }
 
 int		get_next_line(const int fd, char **line)
 {
-	static char	*s[255];
-	char		buf[BUFF_SIZE + 1];
-	char		*tmp;
-	int			ret;
+	static t_gnl	*buf;
+	int				status;
 
-	if (fd < 0 || line == NULL)
-		return (-1);
-	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
-	{
-		buf[ret] = '\0';
-		if (s[fd] == NULL)
-			s[fd] = ft_strnew(1);
-		tmp = ft_strjoin(s[fd], buf);
-		free(s[fd]);
-		s[fd] = tmp;
-		if (ft_strchr(buf, '\n'))
-			break ;
-	}
-	if (ret < 0)
-		return (-1);
-	else if (ret == 0 && (s[fd] == NULL || s[fd][0] == '\0'))
-		return (0);
-	return (ft_new_line(s, line, fd, ret));
+	if (fd < 0 || !line || BUFF_SIZE <= 0)
+		return (ERROR);
+	if (!(buf = ft_check_fd(fd, buf)))
+		return (ERROR);
+	status = ft_writer(buf, line);
+	if (status == SUCCESS)
+		return (SUCCESS);
+	else if (status == ERROR)
+		return (ERROR);
+	else
+		return (NOTHING_RD);
 }

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 21:57:36 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/12 12:53:21 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/19 08:51:39 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,11 @@ char	*ft_strdup(const char *s1)
 
 	i = 0;
 	len = ft_strlen(s1);
-	str = (char *)malloc(sizeof(char) * (++len));
-	if (!str)
-		return (NULL);
+	str = ft_strnew(len);
 	while (i < len)
 	{
 		str[i] = s1[i];
 		i++;
 	}
-	str[i] = '\0';
 	return (str);
 }

@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/12 13:17:22 by sleonia           #+#    #+#              #
-#    Updated: 2019/11/12 13:46:55 by sleonia          ###   ########.fr        #
+#    Updated: 2020/01/10 15:42:35 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ_VECTOR = $(addprefix $(OBJ_VECTOR_PATH), $(OBJ_VECTOR_NAME))
 INC = $(addprefix -I, $(INC_PATH))
 
 SRC_VECTOR_NAME =	ft_vec_distance.c				ft_vec_dot.c 		ft_vec_length.c 	ft_vec_multiplication.c	\
-					ft_vec_multiplication_num.c 	ft_vec_subtract.c	ft_vec_sum.c
+					ft_vec_multiplication_num.c 	ft_vec_subtract.c	ft_vec_sum.c		ft_vec_init.c
 
 OBJ_VECTOR_NAME = $(SRC_VECTOR_NAME:.c=.o)
 

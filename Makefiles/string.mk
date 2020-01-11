@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/12 13:14:32 by sleonia           #+#    #+#              #
-#    Updated: 2019/11/17 04:11:50 by sleonia          ###   ########.fr        #
+#    Updated: 2020/01/11 19:41:09 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ all: $(NAME)
 
 $(OBJ_STRING_PATH)%.o: $(SRC_STRING_PATH)%.c $(INC_PATH)/libft.h $(INC_PATH)/ft_string.h
 	@mkdir -p $(OBJ_STRING_PATH)
-	@gcc $(INC) -o $@ -c $<
+	@gcc -g $(INC) -o $@ -c $<
 	@echo -n \#
 
 $(NAME): $(OBJ_STRING)

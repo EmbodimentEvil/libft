@@ -17,7 +17,7 @@ void	*ft_safe_malloc(size_t size)
 	void *mem;
 
 	if (size == 0)
-		return (NULL);
+		ft_exit(ERROR_MALLOC);
 	if (!(mem = (void *)malloc(sizeof(void) * ++size)))
 		ft_exit(ERROR_MALLOC);
 	return (mem);

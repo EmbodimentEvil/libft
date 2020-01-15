@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 19:38:56 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/12 12:50:37 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/15 22:09:30 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 void			ft_destroy_int_arr(int **arr, int i)
 {
-	while (i-- >= 0)
+	while (i >= 0)
 	{
-		free(arr[i]);
-		arr[i] = NULL;
+		ft_memdel((void *)arr[i]);
+		i--;
 	}
-	free(arr);
-	arr = NULL;
+	ft_memdel((void *)arr);
 }

@@ -17,11 +17,13 @@
 /*
 **	Library for return special value and print errors
 */
+
 # define ERROR_MSG				"\033[31mError!\033[0m"
 # define ERROR_INIT_SDL			"\033[31mFailed to init SDL\033[0m"
 # define ERROR_INPUT			"\033[31mError input!\033[0m"
 # define ERROR_SYMBOLS			"\033[31mError symbols!\033[0m"
 # define ERROR_MALLOC			"\033[31mMalloc error!\033[0m"
+# define ERROR_READ				"\033[31mRead error!\033[0m"
 # define ERROR_READ_BIG_FILE	"\033[31mRead big file error!\033[0m"
 # define ERROR_STRSPLIT			"\033[31mStrsplit error!\033[0m"
 # define ERROR_CAMERA			"\033[31mCamera error!\033[0m"

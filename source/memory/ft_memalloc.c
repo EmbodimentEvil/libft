@@ -18,6 +18,6 @@ void	*ft_memalloc(size_t size)
 
 	if (!(mem = (void *)malloc(size)))
 		ft_exit(ERROR_MALLOC);
-	ft_bzero(mem, size);
+	ft_memset(mem, 0, size);
 	return (mem);
 }

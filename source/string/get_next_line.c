@@ -73,7 +73,7 @@ int		ft_writer(t_gnl *buf, char **line)
 {
 	long int	ct;
 
-	while ((ct = read(buf->fd, buf->buffer, BUFF_SIZE)))
+	while ((ct = read(buf->fd, buf->buffer, GNL_BUFF_SIZE)))
 	{
 		if (ct < 0)
 			return (ERROR);
@@ -94,7 +94,7 @@ int		get_next_line(const int fd, char **line)
 	static t_gnl	*buf;
 	int				status;
 
-	if (fd < 0 || !line || BUFF_SIZE <= 0)
+	if (fd < 0 || !line || GNL_BUFF_SIZE <= 0)
 		return (ERROR);
 	if (!(buf = ft_check_fd(fd, buf)))
 		return (ERROR);

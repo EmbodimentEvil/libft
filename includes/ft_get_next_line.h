@@ -15,7 +15,7 @@
 
 # include "libft.h"
 
-# define BUFF_SIZE 2
+# define GNL_BUFF_SIZE 2
 
 # define ERROR -1
 # define SUCCESS 1
@@ -24,7 +24,7 @@
 typedef struct		s_gnl
 {
 	int				fd;
-	char			buffer[BUFF_SIZE + 1];
+	char			buffer[GNL_BUFF_SIZE + 1];
 	char			*temp;
 	struct s_gnl	*prev;
 	struct s_gnl	*next;

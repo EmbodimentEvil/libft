@@ -29,5 +29,6 @@ void				ft_memdel(void **ap);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memset(void *b, int c, size_t len);
 void				*ft_safe_malloc(size_t size);
+void				*ft_realloc(void *ptr, size_t size);
 
 #endif

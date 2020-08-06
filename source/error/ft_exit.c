@@ -12,10 +12,10 @@
 
 #include "ft_error.h"
 
-void		ft_exit(char *error_text)
+void		ft_exit(const char *error_text)
 {
 	ft_putstr("\033[31m");
 	ft_putendl(error_text);
 	ft_putstr("\033[0m");
-	exit(1);
+	exit(EXIT_FAILURE);
 }

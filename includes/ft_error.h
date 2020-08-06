@@ -22,8 +22,12 @@
 # define ERROR_INIT_SDL			"\033[31mFailed to init SDL\033[0m"
 # define ERROR_INPUT			"\033[31mError input!\033[0m"
 # define ERROR_SYMBOLS			"\033[31mError symbols!\033[0m"
+
 # define ERROR_MALLOC			"\033[31mMalloc error!\033[0m"
 # define ERROR_READ				"\033[31mRead error!\033[0m"
+# define ERROR_FORK				"\033[31mFork error!\033[0m"
+# define ERROR_CHDIR			"\033[31mChdir error!\033[0m"
+
 # define ERROR_READ_BIG_FILE	"\033[31mRead big file error!\033[0m"
 # define ERROR_STRSPLIT			"\033[31mStrsplit error!\033[0m"
 # define ERROR_CAMERA			"\033[31mCamera error!\033[0m"
@@ -35,6 +39,6 @@ void							*malloc_error();
 int								int_error(char *error_text);
 void							*char_error(char *error_text,
 									char *line_for_free);
-void							ft_exit(char *error_text);
+void							ft_exit(const char *error_text);
 
 #endif

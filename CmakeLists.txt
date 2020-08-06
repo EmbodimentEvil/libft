@@ -1,0 +1,126 @@
+cmake_minimum_required(VERSION 3.16)
+project(libft C)
+
+set(CMAKE_C_STANDARD 11)
+add_compile_options(-Wall -Wextra -Werror)
+
+set(
+	CMAKE_RUNTIME_OUTPUT_DIRECTORY
+    ${CMAKE_HOME_DIRECTORY}/bin
+	)
+	
+	set(
+		CMAKE_LIBRARY_OUTPUT_DIRECTORY
+		${CMAKE_HOME_DIRECTORY}/lib
+		)
+
+include_directories(includes)
+#set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY build)
+#set(CMAKE_LIBRARY_OUTPUT_DIRECTORY build)
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY build)
+
+ADD_LIBRARY(ft
+			#libft includes
+			includes/ft_error.h
+			includes/ft_get_next_line.h
+			includes/ft_io.h
+			includes/ft_memory.h
+			includes/ft_my_string.h
+			includes/ft_sort.h
+			includes/ft_string.h
+			includes/ft_vector.h
+			includes/libft.h
+
+			#libft source
+			source/error/char_error.c
+			source/error/ft_exit.c
+			source/error/int_error.c
+			source/error/void_error.c
+
+			source/io/ft_putchar.c
+			source/io/ft_putchar_fd.c
+			source/io/ft_putendl.c
+			source/io/ft_putendl_fd.c
+			source/io/ft_putnbr.c
+			source/io/ft_putnbr_fd.c
+			source/io/ft_putstr.c
+			source/io/ft_putstr_fd.c
+			source/io/print_arr_str.c
+			source/io/putchar_color.c
+			source/io/putstr_color.c
+
+			source/memory/ft_bzero.c
+			source/memory/ft_destroy_int_arr.c
+			source/memory/ft_destroy_string_arr.c
+			source/memory/ft_memalloc.c
+			source/memory/ft_memccpy.c
+			source/memory/ft_memchr.c
+			source/memory/ft_memcmp.c
+			source/memory/ft_memcpy.c
+			source/memory/ft_memdel.c
+			source/memory/ft_memmove.c
+			source/memory/ft_memset.c
+			source/memory/ft_safe_malloc.c
+			source/memory/ft_realloc.c
+
+			source/sort/my_bubble_sort.c
+			source/sort/my_quick_sort.c
+
+			source/string/ft_atof.c
+			source/string/ft_atoi.c
+			source/string/ft_atoi_base.c
+			source/string/ft_find_symb_in_str_arr.c
+			source/string/ft_getnbr.c
+			source/string/ft_isalnum.c
+			source/string/ft_isalpha.c
+			source/string/ft_isascii.c
+			source/string/ft_isdigit.c
+			source/string/ft_isnumber.c
+			source/string/ft_isprint.c
+			source/string/ft_itoa.c
+			source/string/ft_len_arr.c
+			source/string/ft_strcat.c
+			source/string/ft_strchr.c
+			source/string/ft_strchrdup.c
+			source/string/ft_strcmp.c
+			source/string/ft_strcpy.c
+			source/string/ft_strdel.c
+			source/string/ft_strdup.c
+			source/string/ft_strequ.c
+			source/string/ft_striter.c
+			source/string/ft_striteri.c
+			source/string/ft_strjoin.c
+			source/string/ft_strjoin_free.c
+			source/string/ft_strlcat.c
+			source/string/ft_strlen.c
+			source/string/ft_strlow.c
+			source/string/ft_strmap.c
+			source/string/ft_strmapi.c
+			source/string/ft_strncat.c
+			source/string/ft_strncmp.c
+			source/string/ft_strncpy.c
+			source/string/ft_strnequ.c
+			source/string/ft_strnew.c
+			source/string/ft_strnstr.c
+			source/string/ft_strrchr.c
+			source/string/ft_strrev.c
+			source/string/ft_strsplit.c
+			source/string/ft_strstr.c
+			source/string/ft_strsub.c
+			source/string/ft_strtrim.c
+			source/string/ft_strup.c
+			source/string/ft_tolower.c
+			source/string/ft_toupper.c
+			source/string/get_next_line.c
+			source/string/read_big_file.c
+			source/string/read_file.c
+
+			source/vector/ft_vec_distance.c
+			source/vector/ft_vec_dot.c
+			source/vector/ft_vec_init.c
+			source/vector/ft_vec_length.c
+			source/vector/ft_vec_multiplication.c
+			source/vector/ft_vec_multiplication_num.c
+			source/vector/ft_vec_subtract.c
+			source/vector/ft_vec_sum.c
+)

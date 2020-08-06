@@ -35,7 +35,6 @@
 # define ERROR_FIGURES			"\033[31mFigures error!\033[0m"
 
 void							void_error(char *error_text);
-void							*malloc_error();
 int								int_error(char *error_text);
 void							*char_error(char *error_text,
 									char *line_for_free);

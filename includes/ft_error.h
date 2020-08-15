@@ -27,6 +27,7 @@
 # define ERROR_READ				"\033[31mRead error!\033[0m"
 # define ERROR_FORK				"\033[31mFork error!\033[0m"
 # define ERROR_CHDIR			"\033[31mChdir error!\033[0m"
+# define ERROR_SIGNAL			"\033[31mSignal error!\033[0m"
 
 # define ERROR_READ_BIG_FILE	"\033[31mRead big file error!\033[0m"
 # define ERROR_STRSPLIT			"\033[31mStrsplit error!\033[0m"

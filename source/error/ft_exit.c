@@ -11,11 +11,10 @@
 /* ************************************************************************** */
 
 #include "ft_error.h"
+#include <unistd.h>
 
 void		ft_exit(const char *error_text)
 {
-	ft_putstr("\033[31m");
-	ft_putendl(error_text);
-	ft_putstr("\033[0m");
+	ft_putendl_fd(error_text, STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }

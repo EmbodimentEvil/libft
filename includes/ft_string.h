@@ -66,4 +66,6 @@ int					ft_atoi_base(char *nb, int base);
 int					ft_isnumber(int c);
 char				*ft_strchrdup(char *str, char chr);
 int					ft_find_symb_in_str_arr(char **arr, char symbol);
+char				*ft_strtok(char *str, const char *sep);
+
 #endif

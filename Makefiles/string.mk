@@ -29,7 +29,7 @@ SRC_STRING_NAME =	ft_atoi.c		ft_isalnum.c		ft_isprint.c				ft_strchr.c		ft_strde
 					ft_strrchr.c	ft_strsub.c			ft_toupper.c				ft_getnbr.c		ft_strcat.c			\
 					ft_strcpy.c		ft_striter.c		ft_strlcat.c				ft_strmapi.c	ft_strnequ.c		\
 					ft_strrev.c		ft_itoa.c			read_big_file.c				ft_atof.c		ft_atoi_base.c		\
-					ft_isnumber.c	ft_strchrdup.c		ft_find_symb_in_str_arr.c
+					ft_isnumber.c	ft_strchrdup.c		ft_find_symb_in_str_arr.c	ft_strtok.c
 
 OBJ_STRING_NAME = $(SRC_STRING_NAME:.c=.o)
 

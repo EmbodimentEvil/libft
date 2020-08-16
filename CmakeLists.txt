@@ -114,6 +114,7 @@ ADD_LIBRARY(ft
 			source/string/get_next_line.c
 			source/string/read_big_file.c
 			source/string/read_file.c
+			source/string/ft_strtok.c
 
 			source/vector/ft_vec_distance.c
 			source/vector/ft_vec_dot.c
